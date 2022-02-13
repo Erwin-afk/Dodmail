@@ -1,4 +1,4 @@
 # Modmail
-- Currently In progress
-- Private until i finish it!
+> - Currently In progress
+> - Private until I finish it!
  
