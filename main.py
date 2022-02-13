@@ -1,8 +1,3 @@
-from operator import mod
-from turtle import color, title
-from unicodedata import name
-from urllib.parse import uses_relative
-from webbrowser import get
 import discord
 from discord.ext import commands
 
