@@ -1,3 +1,5 @@
+from email.mime import image
+from multiprocessing import Value
 import discord
 from discord.ext import commands
 
@@ -16,10 +18,22 @@ async def on_ready():
 
 
 help_c = """
-> `mail` -  Mail to the mods. 
-> `res`  -  Respond to a specific user's mail.
-> `help` -  Shows this message.
+> `mail`     -   Mail to the mods. 
+> `res`      -   Respond to a specific user's mail.
+> `help`     -   Shows this message.
+> `source`   -   Shows the source code.
+> `say`      -   Sends you're message.
+> `rules`    -   Shows basic discord rules.
+> `support`  -   Support.
 """
+
+basic_rules = """
+> **Be respectful, civil, and welcoming.** \n
+> **No inappropriate or unsafe content.** \n
+> **Do not misuse or spam in any of the channels.** \n
+> **Do not join the server to promote your content.** \n
+> **Any content that is NSFW is not allowed under any circumstances.** \n
+> **Do not buy/sell/trade/give away anything.**"""
 
 
 @client.command()
@@ -38,6 +52,7 @@ async def help(ctx):
 
 @client.command()
 async def mail(ctx,*, problem):
+    await ctx.channel.purge(limit=1)
     guild = ctx.guild
     mods = discord.utils.get(guild.roles, name="admin")
     try:
@@ -60,7 +75,9 @@ async def mail(ctx,*, problem):
 
 
 @client.command()
+@commands.has_permissions(kick_members=True)
 async def res(ctx,user : discord.Member,*, msg):
+    await ctx.channel.purge(limit=1)
     mod = ctx.message.author
     try:
         embed = discord.Embed(title=f"Dear {user.display_name}", description=msg, color = discord.Color.red())
@@ -72,9 +89,46 @@ async def res(ctx,user : discord.Member,*, msg):
         error = discord.Embed(title="Somenthing went wrong... Try again!", color = discord.Color.red())
         await ctx.send(embed=error)
 
+
 @client.command()
 async def source(ctx):
-    embed = discord.Embed(title="Check out the source code on github!", color = discord.Color.red())
+    embed = discord.Embed(title=f"Check out the source code on (https://github.com/Erwin-afk/Modmail)!", color = discord.Color.red())
     await ctx.send(embed=embed)
+
+
+@client.command()
+async def ping(ctx):
+    embed = discord.Embed(title=f"Current latency: {round(client.latency)* 1000}ms", color = discord.Color.gold())
+    await ctx.send(embed=embed)
+
+
+@client.command()
+async def say(ctx,*,msg):
+    await ctx.channel.purge(limit=1)
+    await ctx.send(msg)
+
+
+@client.command()
+async def support(ctx):
+    await ctx.send("Check out the support server!")
+    await ctx.send("https://discord.gg/Cq8WDsFcZW")
+
+
+@client.command()
+async def rules(ctx):
+    await ctx.channel.purge(limit=1)
+    embed = discord.Embed(title="`📜`**Basic rules**", description=basic_rules, color = discord.Color.red())
+    embed.set_image(url="https://cdn-longterm.mee6.xyz/plugins/commands/images/762115688881586186/037b1d0a1decbf7ffc202d2d38621c319d0cb3955225abd1f8ca9bc74c198589.gif")
+    await ctx.send(embed=embed)
+
+
+@client.command()
+@commands.has_permissions(kick_members=True)
+async def clear(ctx,am=3):
+    await ctx.channel.purge(limit=am)
+    embed = discord.Embed(title="Cleared {} messages.".format(am), color = discord.Color.green())
+    await ctx.send(embed=embed)
+
+
 
 client.run(code)
