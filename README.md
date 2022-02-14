@@ -14,5 +14,5 @@ Only moderators/admins can use the server mail function!
 
 
 
-[line](https://user-images.githubusercontent.com/78267674/153889753-c92973da-4489-49da-a1d1-6d67430e8384.gif)
+![img](https://user-images.githubusercontent.com/78267674/153889753-c92973da-4489-49da-a1d1-6d67430e8384.gif)
 
