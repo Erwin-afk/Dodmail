@@ -1,5 +1,6 @@
 from email.mime import image
 from multiprocessing import Value
+from unicodedata import name
 import discord
 from discord.ext import commands
 
@@ -13,6 +14,7 @@ client.remove_command("help")
 
 @client.event
 async def on_ready():
+    
     await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Modmails!"))
     print(f"Logged in as {client.user}")
 
@@ -35,6 +37,18 @@ basic_rules = """
 > **Any content that is NSFW is not allowed under any circumstances.** \n
 > **Do not buy/sell/trade/give away anything.**"""
 
+@client.command()
+async def setup(ctx,*,role : discord.Role):
+    if not role:
+        await ctx.send("Pls insert a role ID")
+    else:
+        try:
+            mod = open("roles.txt", "w+")
+            await mod.writelines(role)
+            await ctx.send("Done!")
+        except:
+            pass
+
 
 @client.command()
 async def help(ctx):
@@ -52,9 +66,11 @@ async def help(ctx):
 
 @client.command()
 async def mail(ctx,*, problem):
+    f = open("roles.txt", "r")
+    mod_name = f.readlines()
     await ctx.channel.purge(limit=1)
     guild = ctx.guild
-    mods = discord.utils.get(guild.roles, name="admin")
+    mods = discord.utils.get(guild.roles, name=mod_name)
     try:
         for user in ctx.guild.members:
             if mods in user.roles:
@@ -66,6 +82,7 @@ async def mail(ctx,*, problem):
                 await user.send(embed=embed)
                 e = discord.Embed(title="Would you like to respond? Type `>res @username <msg>`.", color = discord.Color.red())
                 await user.send(embed=e)
+                f.close()
             else:
                 error = discord.Embed(title="Failed to send. Try again!", color = discord.Color.red())
                 await ctx.send(embed=error)
