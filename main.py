@@ -1,4 +1,5 @@
 from email.mime import image
+import json
 from multiprocessing import Value
 from unicodedata import name
 import discord
@@ -37,18 +38,6 @@ basic_rules = """
 > **Any content that is NSFW is not allowed under any circumstances.** \n
 > **Do not buy/sell/trade/give away anything.**"""
 
-@client.command()
-async def setup(ctx,*,role : discord.Role):
-    if not role:
-        await ctx.send("Pls insert a role ID")
-    else:
-        try:
-            mod = open("roles.txt", "w+")
-            await mod.writelines(role)
-            await ctx.send("Done!")
-        except:
-            pass
-
 
 @client.command()
 async def help(ctx):
@@ -65,12 +54,12 @@ async def help(ctx):
 
 
 @client.command()
-async def mail(ctx,*, problem):
-    f = open("roles.txt", "r")
-    mod_name = f.readlines()
+@commands.has_permissions(kick_members=True)
+async def mail(ctx, role : discord.Role,*, problem):
+
     await ctx.channel.purge(limit=1)
     guild = ctx.guild
-    mods = discord.utils.get(guild.roles, name=mod_name)
+    mods = discord.utils.get(guild.roles, name=f"{role}")
     try:
         for user in ctx.guild.members:
             if mods in user.roles:
@@ -79,10 +68,10 @@ async def mail(ctx,*, problem):
                 await ctx.send(embed=recv)
                 embed = discord.Embed(title= f"New mail from **{ctx.message.guild.name}**", description= f"> {problem}", color = discord.Color.red())
                 embed.set_footer(text=f"User's ID {user.id}")
-                await user.send(embed=embed)
+                o = await user.send(embed=embed)
+                await o.add_reaction("❓")
                 e = discord.Embed(title="Would you like to respond? Type `>res @username <msg>`.", color = discord.Color.red())
                 await user.send(embed=e)
-                f.close()
             else:
                 error = discord.Embed(title="Failed to send. Try again!", color = discord.Color.red())
                 await ctx.send(embed=error)
@@ -92,7 +81,6 @@ async def mail(ctx,*, problem):
 
 
 @client.command()
-@commands.has_permissions(kick_members=True)
 async def res(ctx,user : discord.Member,*, msg):
     await ctx.channel.purge(limit=1)
     mod = ctx.message.author
