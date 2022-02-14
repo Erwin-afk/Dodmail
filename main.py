@@ -64,7 +64,7 @@ async def mail(ctx, role : discord.Role,*, problem):
         for user in ctx.guild.members:
             if mods in user.roles:
                 user = ctx.message.author
-                recv = discord.Embed(title="Succesfully sent you're message to the mods!", color = discord.Color.green())
+                recv = discord.Embed(title="Succesfully sent you're mail!", color = discord.Color.green())
                 await ctx.send(embed=recv)
                 embed = discord.Embed(title= f"New mail from **{ctx.message.guild.name}**", description= f"> {problem}", color = discord.Color.red())
                 embed.set_footer(text=f"User's ID {user.id}")
