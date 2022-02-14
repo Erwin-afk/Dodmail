@@ -1,7 +1,4 @@
-from email.mime import image
-import json
-from multiprocessing import Value
-from unicodedata import name
+import random
 import discord
 from discord.ext import commands
 
@@ -12,6 +9,9 @@ client = discord.Client
 client = commands.Bot(command_prefix=">")
 
 client.remove_command("help")
+
+
+topics = ["How was you're day?","How are you guys?","What's one interesting thing that happened to you this week?","What's your morning routine like?","What have you been listening to lately?","What's you're favorite food? 🥞", "What's you're favorite hobby? 🏀", "Tell me about yourself.", "Have you done anything exciting lately?", "Are you a cat person or a dog person?", "If you didn’t have the job you have now, what would you be?", "What’s your strangest hidden talent?"]
 
 @client.event
 async def on_ready():
@@ -95,10 +95,20 @@ async def res(ctx,user : discord.Member,*, msg):
         error = discord.Embed(title="Somenthing went wrong... Try again!", color = discord.Color.red())
         await ctx.send(embed=error)
 
+@client.command()
+async def topic(ctx):
+    r_topics = random.choice(topics)
+    await ctx.channel.purge(limit=1)
+    await ctx.send("@everyone")
+    await ctx.channel.purge(limit=1)
+    embed = discord.Embed(title=r_topics, color = discord.Color.random())
+    embed.set_image(url="https://cdn-longterm.mee6.xyz/plugins/commands/images/762115688881586186/037b1d0a1decbf7ffc202d2d38621c319d0cb3955225abd1f8ca9bc74c198589.gif")
+    await ctx.send(embed=embed)
+
 
 @client.command()
 async def source(ctx):
-    embed = discord.Embed(title=f"Check out the source code on (https://github.com/Erwin-afk/Modmail)!", color = discord.Color.red())
+    embed = discord.Embed(title=f"Check out the source code on (https://github.com/Erwin-afk/Dodmail)!", color = discord.Color.red())
     await ctx.send(embed=embed)
 
 
