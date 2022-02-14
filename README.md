@@ -1,16 +1,17 @@
 # Dodmail 🤖
-> - Last updated: 2022.02.14
-> - Current version: 1.7
+> - Last updated: ``2022.02.14``
+> - Current version: ``1.7``
    
 # Features
 > - You can make easily mails and send it to everyone at once!  
 > - Active 24/7.  
-> - Subscription feature to the server mails.  
+> - Newbie friendly.
+> - Everything in one place!
 > - Fast reaction time. 
 
 # How to use
 
-Only moderators/admins can use the server mail function or who has kick members permission!
+- Only moderators/admins can use the server mail function or who has ``kick members`` permission!
 
 
 
