@@ -1,4 +1,4 @@
-# Dmail 🤖
+# Dodmail 🤖
 > - Currently In progress
 > - Private until I finish it!  
    
