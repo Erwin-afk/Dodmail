@@ -70,9 +70,8 @@ async def mail(ctx, role : discord.Role,*, problem):
                 embed.set_thumbnail(url="https://i.ibb.co/TrbrW5Z/new-mail.png")
                 embed.set_footer(text=f"To {role}")
                 o = await user.send(embed=embed)
-                await o.add_reaction("❓")
                 e = discord.Embed(title="Would you like to respond? Type `>res @username <msg>`.", color = discord.Color.red())
-                await user.send(embed=e)
+                await o.reply(embed=e)
             else:
                 error = discord.Embed(title="Failed to send. Try again!", color = discord.Color.red())
                 await ctx.send(embed=error)
@@ -110,8 +109,7 @@ async def ping(ctx):
 
 @client.command()
 async def say(ctx,*,msg):
-    await ctx.channel.purge(limit=1)
-    await ctx.send(msg)
+    await ctx.reply(msg)
 
 
 @client.command()
