@@ -2,7 +2,7 @@ import random
 import discord
 from discord.ext import commands
 
-code = "OTQyMTEzOTQ3NDQyNjI2NjEy.Ygfx_A.j757VpaIF1G3BW1Eui_BQyM-m6I"
+code = "XXX"
 
 client = discord.Client
 
@@ -11,7 +11,7 @@ client = commands.Bot(command_prefix=">")
 client.remove_command("help")
 
 
-topics = ["How was you're day?","How are you guys?","What's one interesting thing that happened to you this week?","What's your morning routine like?","What have you been listening to lately?","What's you're favorite food? 🥞", "What's you're favorite hobby? 🏀", "Tell me about yourself.", "Have you done anything exciting lately?", "Are you a cat person or a dog person?", "If you didn’t have the job you have now, what would you be?", "What’s your strangest hidden talent?"]
+topics = ["How was you're day?","How are you guys?","What's one interesting thing that happened to you this week?","What's your morning routine like?","What have you been listening to lately?","What's you're favorite food? 🥞", "What's you're favorite hobby? 🏀", "Tell me about yourself.", "Have you done anything exciting lately?", "Are you a cat person or a dog person?", "If you didn’t have the job you have now, what would you be?", "What’s your strangest hidden talent?", "What’s the best thing you’ve ever bought off Amazon?", "What’s one interesting thing about yourself no one really knows?"]
 
 @client.event
 async def on_ready():
