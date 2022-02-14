@@ -66,8 +66,9 @@ async def mail(ctx, role : discord.Role,*, problem):
                 user = ctx.message.author
                 recv = discord.Embed(title="Succesfully sent you're mail!", color = discord.Color.green())
                 await ctx.send(embed=recv)
-                embed = discord.Embed(title= f"New mail from **{ctx.message.guild.name}**", description= f"> {problem}", color = discord.Color.red())
-                embed.set_footer(text=f"User's ID {user.id}")
+                embed = discord.Embed(title= f"New mail from **{ctx.message.guild.name}**\nFrom: ``{user}``", description= f"> {problem}", color = discord.Color.red())
+                embed.set_thumbnail(url="https://i.ibb.co/TrbrW5Z/new-mail.png")
+                embed.set_footer(text=f"To {role}")
                 o = await user.send(embed=embed)
                 await o.add_reaction("❓")
                 e = discord.Embed(title="Would you like to respond? Type `>res @username <msg>`.", color = discord.Color.red())
