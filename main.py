@@ -16,18 +16,19 @@ client.remove_command("help")
 @client.event
 async def on_ready():
     
-    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="Modmails!"))
+    await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="servers!"))
     print(f"Logged in as {client.user}")
 
 
 help_c = """
-> `mail`     -   Mail to the mods. 
+> `mail`     -   Mail to a specific role. 
 > `res`      -   Respond to a specific user's mail.
 > `help`     -   Shows this message.
 > `source`   -   Shows the source code.
 > `say`      -   Sends you're message.
 > `rules`    -   Shows basic discord rules.
 > `support`  -   Support.
+> `clear`    -   Deletes a specific amount of messages.
 """
 
 basic_rules = """
