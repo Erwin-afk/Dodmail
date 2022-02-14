@@ -1,6 +1,6 @@
 # Dodmail 🤖
-> - Currently In progress
-> - Private until I finish it!  
+> - Last updated: 2022.02.14
+> - Current version: 1.7
    
 # Features
 > - You can make easily mails and send it to everyone at once!  
