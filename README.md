@@ -10,7 +10,7 @@
 
 # How to use
 
-Only moderators/admins can use the server mail function!
+Only moderators/admins can use the server mail function or who has kick members permission!
 
 
 
