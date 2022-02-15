@@ -17,6 +17,10 @@
 
 ![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/78267674/153893360-985c7b8c-ea1b-4457-a650-a81599c53f1d.gif)
 
+## How to install repo
+``$ git clone https://github.com/Erwin-afk/Dodmail``  
+``$ cd modmail``
+
 ## Made by Erwin
 
 
