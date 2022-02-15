@@ -30,7 +30,7 @@ $ cd modmail
 - Heroku hosting.
 
 ## How to host?
-- You can local host, but you need python newest version
+- You can local host, but you need the python newest version (3.7).
 - But if you want to host it for free, then check [`Heroku`](https://www.heroku.com/)
 
 ## Made by Erwin
