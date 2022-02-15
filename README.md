@@ -35,6 +35,8 @@ $ cd modmail
 
 ## Made by Erwin
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/ervinafk)
+
 
 ![img](https://user-images.githubusercontent.com/78267674/153889753-c92973da-4489-49da-a1d1-6d67430e8384.gif)
 
